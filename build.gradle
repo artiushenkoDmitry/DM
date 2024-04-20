@@ -1,0 +1,46 @@
+plugins {
+//    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+
+//    id 'org.graalvm.buildtools.native' version '0.10.1'
+}
+
+application {
+    mainClass = 'com.artsiushenka.Main'
+}
+
+group = 'com.artsiushenka'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+javafx {
+    version = "21"
+    modules = [ 'javafx.controls' ]
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.32'
+    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+
+    implementation group: 'org.springframework', name: 'spring-core', version: '6.1.6'
+    implementation group: 'org.springframework', name: 'spring-context', version: '6.1.6'
+    implementation group: 'org.springframework', name: 'spring-beans', version: '6.1.6'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.32'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
+}
+
+//
+//graalvmNative {
+//    binaries.all {
+//        resources.autodetect()
+//    }
+//}
+
+//test {
+//    useJUnitPlatform()
+//}
