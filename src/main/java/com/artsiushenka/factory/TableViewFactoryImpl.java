@@ -9,6 +9,6 @@ import javafx.scene.control.TableView;
 public class TableViewFactoryImpl implements TableViewFactory{
     private final ApplicationContext applicationContext;
     public TableView<Item> getTableView(){
-        return applicationContext.getBean(javafx.scene.control.TableView.class);
+        return applicationContext.getBean(TableView.class);
     }
 }
