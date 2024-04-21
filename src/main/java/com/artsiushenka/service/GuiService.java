@@ -1,13 +1,8 @@
 package com.artsiushenka.service;
 
 import com.artsiushenka.model.Item;
-import javafx.scene.control.TableView;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.List;
+import javafx.collections.ObservableList;
 
 public interface GuiService {
-    void drawSingleTable(Path path) throws IOException;
-    List<TableView<Item>> getTableViewList();
+    void addSingleTable(ObservableList<Item> items);
 }
