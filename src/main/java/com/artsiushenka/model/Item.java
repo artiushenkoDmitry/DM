@@ -8,9 +8,6 @@ import lombok.Setter;
 
 import java.nio.file.Path;
 
-//@Getter
-//@Setter
-//@RequiredArgsConstructor
 public class Item {
     public final SimpleStringProperty type;
     public final SimpleStringProperty itemName;
