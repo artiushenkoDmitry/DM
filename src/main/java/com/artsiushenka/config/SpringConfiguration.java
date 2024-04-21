@@ -3,6 +3,8 @@ package com.artsiushenka.config;
 import com.artsiushenka.enums.ColumnName;
 import com.artsiushenka.factory.ItemFactory;
 import com.artsiushenka.factory.ItemFactoryImpl;
+import com.artsiushenka.factory.TableViewFactory;
+import com.artsiushenka.factory.TableViewFactoryImpl;
 import com.artsiushenka.model.Item;
 import com.artsiushenka.service.FileService;
 import com.artsiushenka.service.FileServiceImpl;
@@ -14,10 +16,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+
+import java.util.List;
 
 @Configuration
 public class SpringConfiguration {
@@ -60,8 +64,12 @@ public class SpringConfiguration {
     }
 
     @Bean
-    @Scope(value = BeanDefinition.SCOPE_PROTOTYPE)
-    public GuiService javaFxService(FileService fileService, TableView<Item> table){
-        return new JavaFxImpl(fileService, table);
+    public GuiService javaFxService(FileService fileService, List<TableView<Item>> tableViewList, TableViewFactory tableViewFactory){
+        return new JavaFxImpl(fileService, tableViewList, tableViewFactory);
+    }
+
+    @Bean
+    public TableViewFactory tableViewFactory(ApplicationContext context){
+        return new TableViewFactoryImpl(context);
     }
 }

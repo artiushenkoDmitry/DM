@@ -5,7 +5,9 @@ import javafx.scene.control.TableView;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.List;
 
 public interface GuiService {
-    TableView<Item> drawSingleTable(Path path) throws IOException;
+    void drawSingleTable(Path path) throws IOException;
+    List<TableView<Item>> getTableViewList();
 }
