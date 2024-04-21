@@ -6,6 +6,8 @@ import com.artsiushenka.factory.ItemFactoryImpl;
 import com.artsiushenka.factory.TableViewFactory;
 import com.artsiushenka.factory.TableViewFactoryImpl;
 import com.artsiushenka.model.Item;
+import com.artsiushenka.provider.GuiProvider;
+import com.artsiushenka.provider.JavaFxProviderImpl;
 import com.artsiushenka.service.FileService;
 import com.artsiushenka.service.FileServiceImpl;
 import com.artsiushenka.service.GuiService;
@@ -71,5 +73,10 @@ public class SpringConfiguration {
     @Bean
     public TableViewFactory tableViewFactory(ApplicationContext context){
         return new TableViewFactoryImpl(context);
+    }
+
+    @Bean
+    public GuiProvider guiProvider(List<TableView<Item>> tableViewList, GuiService javaFxService){
+        return new JavaFxProviderImpl(tableViewList, javaFxService);
     }
 }
