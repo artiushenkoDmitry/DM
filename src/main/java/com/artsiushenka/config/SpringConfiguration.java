@@ -1,8 +1,8 @@
 package com.artsiushenka.config;
 
 import com.artsiushenka.enums.ColumnName;
-import com.artsiushenka.factory.FileFactory;
-import com.artsiushenka.factory.FileFactoryImpl;
+import com.artsiushenka.factory.ItemFactory;
+import com.artsiushenka.factory.ItemFactoryImpl;
 import com.artsiushenka.model.Item;
 import com.artsiushenka.service.FileService;
 import com.artsiushenka.service.FileServiceImpl;
@@ -11,28 +11,33 @@ import com.artsiushenka.service.JavaFxImpl;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class SpringConfiguration {
     @Bean
-    public FileFactory fileFactory(){
-        return new FileFactoryImpl();
+    public ItemFactory itemFactory(){
+        return new ItemFactoryImpl();
     }
 
     @Bean
-    public FileService fileService(FileFactory fileFactory){
-        return new FileServiceImpl(fileFactory);
+    public FileService fileService(ItemFactory itemFactory){
+        return new FileServiceImpl(itemFactory);
     }
 
     @Bean
+    @Scope("prototype")
     public TableView<Item> tableView(){
         TableView<Item> table = new TableView<>();
         table.setEditable(true);
         VBox.setVgrow(table, Priority.ALWAYS);
+        HBox.setHgrow(table, Priority.ALWAYS);
         TableColumn<Item, String> typeCol = new TableColumn(ColumnName.TYPE.getValue());
         typeCol.setCellValueFactory(new PropertyValueFactory("type"));
         typeCol.prefWidthProperty().bind(table.widthProperty().multiply(0.1));
@@ -55,6 +60,7 @@ public class SpringConfiguration {
     }
 
     @Bean
+    @Scope(value = BeanDefinition.SCOPE_PROTOTYPE)
     public GuiService javaFxService(FileService fileService, TableView<Item> table){
         return new JavaFxImpl(fileService, table);
     }

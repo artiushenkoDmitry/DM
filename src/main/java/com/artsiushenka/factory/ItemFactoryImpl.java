@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
-public class FileFactoryImpl implements FileFactory{
+public class ItemFactoryImpl implements ItemFactory {
 
     public Item generateItem (Path path) throws IOException {
         return new Item(new SimpleStringProperty(getTypeColumnValue(path)),
