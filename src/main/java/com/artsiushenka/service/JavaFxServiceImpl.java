@@ -9,13 +9,13 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class JavaFxServiceImpl implements GuiService {
-    private final TableViewCollection tableViewList;
+    private final TableViewCollection tableViewCollection;
     private final TableViewFactory tableViewFactory;
 
     public void addSingleTable(ObservableList<Item> items) {
         TableView<Item> tableView = tableViewFactory.getTableView();
         tableView.setItems(items);
 
-        tableViewList.addTableViewList(tableView);
+        tableViewCollection.addTableViewList(tableView);
     }
 }
