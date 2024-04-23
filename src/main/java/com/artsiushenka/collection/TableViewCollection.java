@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface TableViewCollection {
     List<TableView<Item>> getTableViewList();
-    void addTableViewList(TableView<Item> tableView);
+    void addTableView(TableView<Item> tableView);
 }

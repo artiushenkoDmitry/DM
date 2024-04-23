@@ -16,6 +16,6 @@ public class JavaFxServiceImpl implements GuiService {
         TableView<Item> tableView = tableViewFactory.getTableView();
         tableView.setItems(items);
 
-        tableViewCollection.addTableViewList(tableView);
+        tableViewCollection.addTableView(tableView);
     }
 }

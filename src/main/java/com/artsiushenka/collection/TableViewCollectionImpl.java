@@ -14,7 +14,7 @@ public class TableViewCollectionImpl implements TableViewCollection{
     public List<TableView<Item>> getTableViewList(){
         return tableViewList;
     }
-    public void addTableViewList(TableView<Item> tableView){
+    public void addTableView(TableView<Item> tableView){
         tableViewList.add(tableView);
     }
 }
