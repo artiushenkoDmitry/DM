@@ -6,7 +6,9 @@ import com.artsiushenka.service.FileService;
 import com.artsiushenka.service.GuiService;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
 
@@ -25,10 +27,9 @@ public class JavaFxProviderImpl implements GuiProvider {
             itemList = fileService.getItemList(Paths.get("."));
             javaFxService.addSingleTable(itemList);
             javaFxService.addSingleTable(itemList);
+            throw new IOException("Just another exception");
         } catch (IOException e) {
-            //TODO
-            handleException(e);
-//            throw new RuntimeException(e);
+            handleException(e, stage);
         }
 
 
@@ -40,8 +41,17 @@ public class JavaFxProviderImpl implements GuiProvider {
     }
 
     @Override
-    public void handleException(Exception exception) {
+    public void handleException(Exception exception, Stage stage) {
+        //TODO
+        Label label = new Label(exception.getMessage());
+        label.setMinWidth(80);
+        label.setMinHeight(50);
 
+        Popup popup = new Popup();
+        popup.setX(300);
+        popup.setY(200);
+        popup.getContent().add(label);
+        popup.show(stage);
     }
 
 }
