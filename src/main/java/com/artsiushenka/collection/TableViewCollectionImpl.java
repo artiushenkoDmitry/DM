@@ -11,11 +11,8 @@ public class TableViewCollectionImpl implements TableViewCollection{
 
     private final List<TableView<Item>> tableViewList;
 
-    //TODO
     public List<TableView<Item>> getTableViewList(){
-        return tableViewList.stream()
-                .filter(e -> !e.getItems().isEmpty())
-                .toList();
+        return tableViewList;
     }
     public void addTableViewList(TableView<Item> tableView){
         tableViewList.add(tableView);

@@ -26,6 +26,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Configuration
 public class SpringConfiguration {
@@ -84,6 +85,10 @@ public class SpringConfiguration {
 
     @Bean
     public TableViewCollection tableViewCollection(List<TableView<Item>> tableViewCollection){
-        return new TableViewCollectionImpl(tableViewCollection);
+        List<TableView<Item>> result = tableViewCollection.stream()
+                .filter(e -> !e.getItems().isEmpty())
+                .collect(Collectors.toList());
+
+        return new TableViewCollectionImpl(result);
     }
 }
