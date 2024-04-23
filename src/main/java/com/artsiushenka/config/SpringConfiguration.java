@@ -2,7 +2,6 @@ package com.artsiushenka.config;
 
 import com.artsiushenka.collection.TableViewCollection;
 import com.artsiushenka.collection.TableViewCollectionImpl;
-import com.artsiushenka.enums.ColumnName;
 import com.artsiushenka.factory.ItemFactory;
 import com.artsiushenka.factory.ItemFactoryImpl;
 import com.artsiushenka.factory.TableViewFactory;
@@ -14,16 +13,9 @@ import com.artsiushenka.service.FileService;
 import com.artsiushenka.service.FileServiceImpl;
 import com.artsiushenka.service.GuiService;
 import com.artsiushenka.service.JavaFxServiceImpl;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 
 import java.util.List;
 import java.util.stream.Collectors;
